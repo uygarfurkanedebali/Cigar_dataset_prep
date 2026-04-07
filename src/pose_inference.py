@@ -1,4 +1,3 @@
-import argparse
 import os
 from pathlib import Path
 from ultralytics import YOLO
@@ -9,11 +8,11 @@ def run_inference(input_dir: str, output_dir: str, model_path: str):
     """
     input_path = Path(input_dir)
     output_path = Path(output_dir)
-    # model_file = Path(model_path)
     
     # Validation checks
     if not input_path.exists() or not input_path.is_dir():
-        raise NotADirectoryError(f"Input directory does not exist or is not a directory: {input_dir}")
+        print(f"Error: Input directory does not exist: {input_dir}")
+        return
         
     # Ensure output directory exists
     output_path.mkdir(parents=True, exist_ok=True)
@@ -46,15 +45,19 @@ def run_inference(input_dir: str, output_dir: str, model_path: str):
             print(f"No detection for: {img_path.name}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run YOLO Pose Inference to extract keypoints.")
-    parser.add_argument("--input", type=str, required=True, help="Input directory containing images.")
-    parser.add_argument("--output", type=str, required=True, help="Output directory for .txt label files.")
-    parser.add_argument("--model", type=str, required=True, help="Path to YOLO pose model weights (.pt).")
+    # Hardcoded default paths for easy "No-Flag" execution
+    DEFAULT_INPUT = "data/raw"
+    DEFAULT_OUTPUT = "data/txt"
+    DEFAULT_MODEL = "yolo11n-pose.pt"
     
-    args = parser.parse_args()
+    # Use relative paths from the project root
+    base_dir = Path(__file__).resolve().parent.parent
+    input_dir = str(base_dir / DEFAULT_INPUT)
+    output_dir = str(base_dir / DEFAULT_OUTPUT)
+    model_path = str(base_dir / DEFAULT_MODEL)
     
     try:
-        run_inference(args.input, args.output, args.model)
-        print("Inference step completed.")
+        run_inference(input_dir, output_dir, model_path)
+        print("Inference step completed successfully.")
     except Exception as e:
         print(f"An error occurred: {e}")

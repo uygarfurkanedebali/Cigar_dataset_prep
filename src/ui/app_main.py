@@ -3,6 +3,7 @@ import os
 import cv2
 import numpy as np
 import csv
+import shutil
 from pathlib import Path
 try:
     from .utils import PoseNormalizer
@@ -16,7 +17,7 @@ from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
     QLabel, QDesktopWidget, QSizePolicy, QDialog, QTextEdit, QPushButton, QMessageBox
 )
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QFileSystemWatcher
 from PyQt5.QtGui import QImage, QPixmap
 
 import matplotlib
@@ -112,6 +113,21 @@ class AnnotationWindow(QMainWindow):
         self.cached_main_pixmap = None
         self.cached_head_pixmap = None
         
+        # 0. Anchor Paths (Absolute Project Root)
+        self.base_dir = Path(__file__).resolve().parent.parent.parent
+        self.raw_dir = (self.base_dir / "data" / "raw").resolve()
+        self.processed_dir = (self.base_dir / "data" / "processed").resolve()
+        self.txt_dir = (self.base_dir / "data" / "txt").resolve()
+        
+        # Ensure base directories exist immediately
+        self.raw_dir.mkdir(parents=True, exist_ok=True)
+        self.processed_dir.mkdir(parents=True, exist_ok=True)
+        self.txt_dir.mkdir(parents=True, exist_ok=True)
+
+        # Initialize Folder Watcher
+        self.watcher = QFileSystemWatcher()
+        self.watcher.directoryChanged.connect(self.load_dataset)
+        
         self.init_ui()
         self.center_window()
         self.load_categories()
@@ -166,41 +182,78 @@ class AnnotationWindow(QMainWindow):
         central_widget.setLayout(main_layout)
 
     def load_dataset(self):
-        """Find image and annotation pairs."""
-        base_dir = Path(__file__).resolve().parent.parent.parent
-        raw_dir = base_dir / "data" / "raw"
-        proc_dir = base_dir / "data" / "processed"
-        
-        if not raw_dir.exists() or not proc_dir.exists():
-            print("Warning: Data directories do not exist.")
-            return
+        """Find images in raw and processed subfolders using absolute anchors."""
+        # Watch raw directory if not already
+        if self.raw_dir.as_posix() not in self.watcher.directories():
+            self.watcher.addPath(str(self.raw_dir))
 
-        self.annotations_file = proc_dir / "annotations.csv"
-        if self.annotations_file.exists():
-            try:
-                with open(self.annotations_file, 'r', newline='', encoding='utf-8') as f:
-                    reader = csv.DictReader(f)
-                    for row in reader:
-                        # Fallback for old format if necessary
-                        img_name = row.get('image_path') or row.get('image_name')
-                        if img_name:
-                            self.labels_state[img_name] = row
-            except Exception as e:
-                print(f"Error loading annotations: {e}")
+        # Store current file to try and preserve index
+        current_file = None
+        if 0 <= self.current_index < len(self.image_pairs):
+            current_file = self.image_pairs[self.current_index][0].name
+
+        # 1. Reset Internal State (Load CSV only if labels_state is empty)
+        if not self.labels_state:
+            self.labels_state = {}
+            self.annotations_file = self.processed_dir / "labels.csv"
+            if self.annotations_file.exists():
+                try:
+                    with open(self.annotations_file, 'r', newline='', encoding='utf-8') as f:
+                        reader = csv.DictReader(f)
+                        for row in reader:
+                            img_name = row.get('image_path') or row.get('image_name')
+                            if img_name:
+                                self.labels_state[img_name] = row
+                except Exception as e:
+                    print(f"Error loading annotations: {e}")
 
         supported_exts = {'.png', '.jpg', '.jpeg', '.bmp'}
-        for img_path in raw_dir.iterdir():
-            if img_path.suffix.lower() in supported_exts:
-                txt_path = proc_dir / f"{img_path.stem}.txt"
-                # Load the image anyway, even if txt_path doesn't exist
-                self.image_pairs.append((img_path, txt_path))
         
-        if self.image_pairs:
-            print(f"Loaded {len(self.image_pairs)} image/label pairs.")
-            self.current_index = 0
-            self.update_ui()
-        else:
-            print("No matching image/label pairs found in dataset directories.")
+        # 2. Collect Images from multiple sources
+        found_images = {}
+        
+        # Scan raw (unlabeled)
+        if self.raw_dir.exists():
+            for img_path in self.raw_dir.iterdir():
+                if img_path.suffix.lower() in supported_exts:
+                    found_images[img_path.name] = img_path
+
+        # Scan processed subfolders (labeled)
+        if self.processed_dir.exists():
+            for sub in self.processed_dir.iterdir():
+                # SAFETY: explicitly skip any subfolder named 'processed' to recover from prev bug
+                if sub.is_dir() and sub.name.lower() != "processed":
+                    for img_path in sub.iterdir():
+                        if img_path.suffix.lower() in supported_exts:
+                            # Prefer current location found (avoids dupes during move)
+                            found_images[img_path.name] = img_path
+
+        self.image_pairs = []
+        for name, img_path in found_images.items():
+            # YOLO txt files are now kept in data/txt/ as per pose_inference.py
+            txt_path = self.txt_dir / f"{Path(name).stem}.txt"
+            self.image_pairs.append((img_path, txt_path))
+        
+        # Sort to keep order consistent
+        self.image_pairs.sort(key=lambda x: x[0].name)
+
+        if not self.image_pairs:
+            print("No matching image/label pairs found. Waiting for images...")
+            self.current_index = -1
+            self.status_label.setText("No images found in data/raw or data/processed. Add images to start.")
+            return
+
+        # Restore index if possible, otherwise default to 0 or preserve current index
+        new_index = 0
+        if current_file:
+            for i, (path, _) in enumerate(self.image_pairs):
+                if path.name == current_file:
+                    new_index = i
+                    break
+        
+        self.current_index = new_index
+        print(f"Dataset loaded. {len(self.image_pairs)} images total in unified queue.")
+        self.update_ui()
 
     def load_categories(self):
         """Load label names from labels.txt."""
@@ -505,12 +558,57 @@ class AnnotationWindow(QMainWindow):
                 row_data['label'] = str(label_val)
                 row_data['image_path'] = img_path.name
                 
-                self.labels_state[img_path.name] = row_data
+                # 1. Determine Source & Handle Re-labeling (Absolute Anchors)
+                img_name_key = img_path.name
+                current_source_path = img_path
+                
+                if img_name_key in self.labels_state:
+                    try:
+                        old_row = self.labels_state[img_name_key]
+                        old_label_val = int(old_row['label'])
+                        # If label changed, identify the old folder using absolute processed_dir
+                        if old_label_val != label_val:
+                            old_label_name = self.category_names[old_label_val-1] if old_label_val <= len(self.category_names) else f"label_{old_label_val}"
+                            old_categorized_file = self.processed_dir / old_label_name / img_name_key
+                            if old_categorized_file.exists():
+                                current_source_path = old_categorized_file
+                                print(f"Source Switch: Moving from category '{old_label_name}' to new one.")
+                    except Exception as e:
+                        print(f"Cleanup Error: {e}")
+
+                # 2. Update Annotations State
+                self.labels_state[img_name_key] = row_data
                 self.save_annotations()
                 
-                # Show descriptive name in status label
-                name = self.category_names[label_val-1] if label_val <= len(self.category_names) else str(label_val)
-                self.status_label.setText(f"File: {img_path.name} | Label: {name}")
+                # 3. Perform the Move (Always anchored to self.processed_dir)
+                name = self.category_names[label_val-1] if label_val <= len(self.category_names) else f"label_{label_val}"
+                self.status_label.setText(f"File: {img_name_key} | Label: {name}")
+
+                try:
+                    target_dir = self.processed_dir / name
+                    target_dir.mkdir(parents=True, exist_ok=True)
+                    target_file = target_dir / img_name_key
+                    
+                    # Safety: Ensure we don't try to move if file disappeared or is at target
+                    if current_source_path.exists() and current_source_path != target_file:
+                        shutil.move(str(current_source_path), str(target_file))
+                        print(f"Action: Moved Image -> {target_file}")
+                    else:
+                        print(f"Skip Move: File already at target or missing.")
+                except Exception as e:
+                    print(f"Error moving image: {e}")
+
+                # 4. Update in-memory path (Maintain queue for backward navigation)
+                self.image_pairs[self.current_index] = (Path(target_file), txt_path)
+                
+                # Automatically move to the next image if available
+                if self.current_index < len(self.image_pairs) - 1:
+                    self.current_index += 1
+                    self.update_ui()
+                    print(f"Action: Unified Navigation | Moved to next index: {self.current_index}")
+                else:
+                    self.update_ui()
+                    print("Action: Finished labeling all current images.")
         else:
             super().keyPressEvent(event)
 
