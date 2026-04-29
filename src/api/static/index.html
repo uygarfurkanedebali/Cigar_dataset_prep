@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Person Viewer</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">Person<span>Crop</span></div>
+            <div class="stats" id="stats">0 / 0</div>
+        </header>
+
+        <main id="viewer-container">
+            <div id="loader" class="loader">
+                <div class="spinner"></div>
+                <p>Loading Dataset...</p>
+            </div>
+            
+            <div id="viewer" class="hidden">
+                <div class="image-wrapper">
+                    <img id="main-image" src="" alt="Person Crop">
+                    <div class="metadata" id="image-metadata">
+                        <span id="source-name">source_image.jpg</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="controls">
+                <div class="keybinds">
+                    <span><kbd>A</kbd> Prev</span>
+                    <span><kbd>D</kbd> Next</span>
+                    <span><kbd>1</kbd>-<kbd>4</kbd> Label</span>
+                </div>
+                <div id="current-label" class="label-badge">Not Labeled</div>
+            </div>
+        </footer>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

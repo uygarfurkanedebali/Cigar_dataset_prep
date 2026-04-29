@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/lt/Desktop/Coding/Cigar_dataset_prep/src/ui/person_viewer.py", line 8, in <module>
+    from PyQt5.QtWidgets import (
+ModuleNotFoundError: No module named 'PyQt5'

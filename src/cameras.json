@@ -1,0 +1,457 @@
+[
+    {
+        "ip": "10.6.7.50",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.50:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.50",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.50:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.50",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.50:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.50",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.50:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.50",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.50:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.50",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.50:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.50",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.50:554/1"
+    },
+    {
+        "ip": "10.6.7.51",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.51:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.51",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.51:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.51",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.51:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.51",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.51:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.51",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.51:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.51",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.51:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.51",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.51:554/1"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Dahua-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Dahua-Sub",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.52",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.52:554/1"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Dahua-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Dahua-Sub",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.53",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.53:554/1"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Dahua-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Dahua-Sub",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.54",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.54:554/1"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Dahua-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Dahua-Sub",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.55",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.55:554/1"
+    },
+    {
+        "ip": "10.6.7.56",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.56:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.56",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.56:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.56",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.56:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.56",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.56:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.56",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.56:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.56",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.56:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.56",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.56:554/1"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Dahua-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Dahua-Sub",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.57",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.57:554/1"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Dahua-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Dahua-Sub",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.58",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.58:554/1"
+    },
+    {
+        "ip": "10.6.7.59",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.59:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.59",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.59:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.59",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.59:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.59",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.59:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.59",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.59:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.59",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.59:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.59",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.59:554/1"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Hik-General",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/Streaming/Channels/1"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Hik-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/Streaming/Channels/101"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Hik-Sub1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/Streaming/Channels/102"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Hik-Sub2",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/Streaming/Channels/103"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Dahua-Main",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/cam/realmonitor?channel=1&subtype=0"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Dahua-Sub",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/cam/realmonitor?channel=1&subtype=1"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Legacy-CH0",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/live/ch0"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Media-V1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/media/video1"
+    },
+    {
+        "ip": "10.6.7.60",
+        "alias": "Short-1",
+        "url": "rtsp://admin:Admin12345-@10.6.7.60:554/1"
+    }
+]

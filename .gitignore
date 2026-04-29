@@ -1,3 +1,8 @@
-data/processed
+.venv/
 data/raw
 data/txt
+src/cigarette_seg_clean_v1.v26i.yolov8/
+src/dataset/
+src/interaction_dataset
+src/no_person_dataset/
+temp_crops
